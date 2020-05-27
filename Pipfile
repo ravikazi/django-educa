@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 requests = "*"
 django = "*"
+django-braces = "==1.14.0"
 
 [requires]
 python_version = "3.8"

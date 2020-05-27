@@ -1,0 +1,53 @@
+Video 3:
+	Create a fixture
+		python manage.py dumpdata courses --indent=2
+
+	Save dumpdata fixture to folder courses/fixtures name as subjects
+		python manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects
+
+Video 4:
+Create Diverse content models
+
+Video 5:
+Creating custom models field
+	Check Order of module
+		python manage.py shell
+		from django.contrib.auth.models import User
+		from courses.models import Subject, Course, Module
+		user = User.objects.latest('id')
+		subject = Subject.objects.latest('id')
+		c1 = Course.objects.create(subject=subject, owner=user,title='Course 1', slug='course1')
+		m1 = Module.objects.create(course=c1, title='Module 1')
+		m1.order
+		m2 = Module.objects.create(course=c1, title='Module 2')
+		m2.order
+		m3 = Module.objects.create(course=c1, title='Module 3', order=5)
+		m3.order
+		m4 = Module.objects.create(course=c1, title='Module 4')
+		m4.order
+
+		c2 = Course.objects.create(subject=subject, owner=user,title='Course 2', slug='course2')
+		m5 = Module.objects.create(course=c2, title='Module 1')
+		m5.order
+
+Video 6:
+Create a content management system
+	functionality of cms
+	->Login to cms
+	->Listing the courses created by instructor
+	->creating editing and deleting courses
+	->adding modules to a course and re-order them
+	->Adding different type of content to each module and re-order content
+
+	
+Installing Braces to Django
+	pipenv lock --clear
+
+	pipenv install --skip-lock
+
+	pipenv graph
+
+	pipenv lock --pre
+
+	pipenv uninstall braces
+	pipenv install braces==1.14.0

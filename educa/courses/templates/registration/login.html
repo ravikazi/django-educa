@@ -1,0 +1,53 @@
+{% extends 'educa/base.html' %}
+{% load static %}
+
+{% block content %}
+  
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p class="errornote">
+            {{ error }}
+        </p>
+        {% endfor %}
+        {% endif %}
+
+        <div id="content-main">
+          <!-- <form action="{% url 'login' %}" method="post"> -->
+          <form action="." method="post">
+            <!-- <div class="form-group">
+              <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" class="form-control form-control-user" id="id_username" aria-describedby="usernameHelp" placeholder="Enter Username...">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" autocomplete="current-password" class="form-control form-control-user" id="id_password" placeholder="Password">
+            </div> -->
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <input type="submit" name="Log In">
+          </form>
+          <!-- <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+            <div class="form-row">
+              {{ form.username.errors }}
+              {{ form.username.label_tag }} {{ form.username }}
+            </div>
+            <div class="form-row">
+              {{ form.password.errors }}
+              {{ form.password.label_tag }} {{ form.password }}
+              <input type="hidden" name="next" value="{{ next }}">
+            </div>
+            <div class="submit-row">
+              <label>&nbsp;</label><input type="submit" value="Log In">
+            </div>
+          </form> -->
+        </div>
+    </div>
+    <!-- <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div> -->
+  </header>
+
+{% endblock %}
